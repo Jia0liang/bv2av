@@ -1,18 +1,18 @@
-/*������ο�mcfx��Python�����㷨��д���ɣ�ͬ����WTFPL��Դ*/
+/*本代码参考mcfx的Python代码算法改写而成，同样以WTFPL开源*/
 #include<stdio.h>
 #include<string.h>
-/*�����õ��ĺ������Զ��壩*/
+/*所有用到的函数（自定义）*/
 long long findec(char x);
 long long pow_kano(long long x,long long y);
 long long dec(char x[]);
 char* enc(long long x);
-/*Ԥ��ȫ�ֱ���*/
-char enc_result[12];
+/*预设全局变量*/
+char enc_result[13];
 long long xor=177451812,add=8728348608;
-/*���Һ��base58�ַ���*/
+/*打乱后的base58字符表*/
 char table[]="fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF";
-/*��Ҫ��/���ܵ�av��λ�ã�����BV�й̶�ֵ"BV1##4#1#7##"(#��ʾ��Ҫ�㷨��ԭ���ַ�)
-����ֻ��Ҫ���#����λ�õ��ַ�����*/
+/*需要加/解密的av号位置，由于BV有固定值"BV1##4#1#7##"(#表示需要算法还原的字符)
+所以只需要算出#所在位置的字符即可*/
 long long s[]={11,10,3,8,4,6};
 int main(){
         printf("%lld\n",dec("BV17x411w7KC"));
@@ -39,7 +39,7 @@ long long dec(char x[]){
      }
      return ((r-add)^xor);
 }
-/*ƥ���ֵ����ַ���Ӧ����ֵ*/
+/*匹配字典内字符对应的数值*/
 long long findec(char x){
     int i;
     for(i=0;i<strlen(table);i++)
@@ -47,7 +47,7 @@ long long findec(char x){
         break;
     return i;
 }
-//��дϵͳ����(�Դ���pow����ǿת�ᶪ����)
+//重写系统函数(自带的pow函数强转会丢精度)
 long long pow_kano(long long x,long long y){
     if(y==0)return 1;
     return x*pow_kano(x,y-1);
