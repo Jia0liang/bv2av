@@ -15,12 +15,19 @@ char table[]="fZodR9XQDSUm21yCkr6zBqiveYah8bt4xsWpHnJE7jL5VG3guMTKNPAwcF";
 所以只需要算出#所在位置的字符即可*/
 long long s[]={11,10,3,8,4,6};
 int main(){
-        printf("%lld\n",dec("BV17x411w7KC"));
-        printf("%lld\n",dec("BV1Q541167Qg"));
-        printf("%lld\n",dec("BV1mK4y1C7Bz"));
-        printf("%s\n",enc(170001));
-        printf("%s\n",enc(455017605));
-        printf("%s\n",enc(882584971));
+    int opt,av;
+    char bv[13];
+    printf("Please select a number to continue convert (1:BV2AV 2:AV2BV):");
+    scanf("%d",&opt);
+    switch(opt){
+    case 1:
+        printf("Please input a BV number:");scanf("%s",bv);printf("AV%d",dec(bv));break;
+    case 2:
+        printf("Please input a AV number:");scanf("%d",&av);printf("%s",enc(av));break;
+    default:
+        main();
+    }
+    return 0;
 }
 char* enc(long long x){
     int i,j;
