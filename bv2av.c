@@ -23,7 +23,7 @@ int main(){
     case 1:
         printf("Please input a BV number:");scanf("%s",bv);printf("AV%d",dec(bv));break;
     case 2:
-        printf("Please input a AV number:");scanf("%d",&av);printf("%s",enc(av));break;
+        printf("Please input a AV number(integer,not include \"AV\"):");scanf("%d",&av);printf("%s",enc(av));break;
     default:
         main();
     }
