@@ -17,7 +17,7 @@ long long s[]={11,10,3,8,4,6};
 int main(){
     int opt,av;
     char bv[13];
-    printf("Please select a number to continue convert (1:BV2AV 2:AV2BV):");
+    printf("Please select a number to continue converting (1:BV2AV 2:AV2BV):");
     scanf("%d",&opt);
     switch(opt){
     case 1:
